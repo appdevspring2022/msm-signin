@@ -16,12 +16,21 @@
 
   <body>
     <ul>
+      <% if @current_user == nil %>
+        <li>
+          <a href="/user_sign_in">Sign in</a>
+        </li>
+        <li>
+          <a href="/user_sign_up">Sign up</a>
+        </li>
+      <% else%>  
       <li>
-        <a href="/user_sign_in">Sign in</a>
-      </li>
+        <a href="/bookmarks">My bookmarks</a>
+      </li>        
       <li>
-        <a href="/user_sign_up">Sign up</a>
+        <a href="/user_sign_out">Sign out</a>
       </li>
+      <% end %>
       <li>
         <a href="/">Homepage</a>
       </li>
@@ -37,6 +46,8 @@
         <a href="/actors">All actors</a>
       </li>
     </ul>
+    <p style="color: green;"><%= notice %></p>
+    <p style="color: red;"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
